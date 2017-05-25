@@ -23,7 +23,8 @@ class clf_boots2(object):
             #print(i)
             #print('herr')
             num = (i+10)%self.n
-            ind = np.random.choice(self.y.shape[0],num)
+	    ind = np.floor(np.random.rand(i)*self.y.shape[0]).astype(int)
+            #ind = np.random.choice(self.y.shape[0],num)
             #print(np.random.choice(self.y.shape[0],i))
             #print(ind)
             #print(ind)
