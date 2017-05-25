@@ -23,7 +23,7 @@ class clf_boots2(object):
             #print(i)
             #print('herr')
             num = (i+10)%self.n
-	    ind = np.floor(np.random.rand(i)*self.y.shape[0]).astype(int)
+	    ind = np.floor(np.random.rand(num)*self.y.shape[0]).astype(int)
             #ind = np.random.choice(self.y.shape[0],num)
             #print(np.random.choice(self.y.shape[0],i))
             #print(ind)
@@ -42,6 +42,9 @@ class clf_boots2(object):
         boot_ind = self.this_boots()
         #print(boot_ind)
         for i in boot_ind:
+            while(self.y[np.array(i)].sum()==0):
+                i = np.floor(np.random.rand((len(i)+10)%self.n+1)*len(i)).astype(int)
+
             #print(i)
             self.model_list.append(self.train(self.X[np.array(i),:],self.y[np.array(i)]))
         #return 
